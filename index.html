@@ -1,287 +1,196 @@
-<!DOCTYPE html>
-<html lang="ta">
-
-<head>
-
+<!DOCTYPE html><html lang="ta"><head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#17000d"><title>My Feelings ❤️</title>
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
 
-    <meta name="theme-color"
-          content="#17000d">
+</head><body><!-- MUSIC -->
+<audio id="bgMusic" src="song101.mp3" loop></audio>
 
-    <title>My Feelings ❤️</title>
+<!-- FLOATING HEARTS -->
+<div id="heartsContainer"></div>
 
-    <link rel="stylesheet"
-          href="style.css">
+<!-- START SCREEN -->
+<section class="screen active" id="startScreen">
 
-</head>
+    <div class="glass-card start-card">
 
-<body>
+        <div class="gift-icon">💌</div>
 
-    <!-- ================= MUSIC ================= -->
+        <h1>Open My Feelings 💞</h1>
 
-    <audio id="bgMusic"
-           src="song101.mp3"
-           loop>
-    </audio>
+        <p>
+            உனக்காக நான் சொல்லாமல் வைத்திருந்த<br>
+            சில உணர்வுகள்...
+        </p>
+
+        <p class="small-note">
+            இதில் என் மனதில் இருக்கும் சில உணர்வுகள் 🥰
+        </p>
+
+        <button id="openBtn">
+            Open My Heart 🫀
+        </button>
+
+    </div>
+
+</section>
 
 
-    <!-- ================= FLOATING HEARTS ================= -->
+<!-- FEELINGS SCREEN -->
+<section class="screen" id="memoryScreen">
 
-    <div id="heartsContainer"></div>
+    <div class="glass-card memory-card">
 
+        <div class="counter">
+            My Feeling
+            <span id="currentNumber">1</span>
+            of 6
+        </div>
 
-    <!-- ================= START SCREEN ================= -->
+        <h2 id="memoryHeading">
+            My Feeling ❤️
+        </h2>
 
-    <section class="screen active"
-             id="startScreen">
+        <div class="photo-wrapper">
 
-        <div class="glass-card start-card">
+            <img
+                id="memoryPhoto"
+                src="photo101.jpg"
+                alt="My Feeling"
+            >
 
-            <div class="gift-icon">
-                💌
-            </div>
-
-            <h1>
-                Open My Feelings 💞
-            </h1>
-
-            <p>
-                உனக்காக நான் சொல்லாமல் வைத்திருந்த<br>
-                சில உணர்வுகள்...
-            </p>
-
-            <p class="small-note">
-                இதில் என் மனதில் தேகம் 🥰
-            </p>
-
-            <button id="openBtn">
-                Open My Heart 🫀
-            </button>
+            <canvas id="scratchCanvas"></canvas>
 
         </div>
 
-    </section>
+        <p class="scratch-hint">
+            👆 Scratch பண்ணி என் Feeling-ஐ பாரு ❤️
+        </p>
 
+        <div id="specialMessage" class="special-message">
 
-    <!-- ================= MY FEELINGS SCREEN ================= -->
+            <div class="message-icon">💖</div>
 
-    <section class="screen"
-             id="memoryScreen">
-
-        <div class="glass-card memory-card">
-
-            <div class="counter">
-                My Feeling
-                <span id="currentNumber">1</span>
-                of 6
-            </div>
-
-
-            <h2 id="memoryHeading">
+            <h3 id="messageTitle">
                 My Feeling ❤️
-            </h2>
+            </h3>
+
+            <p id="messageText"></p>
+
+        </div>
+
+        <button id="nextBtn" class="next-btn">
+            Next Feeling ❤️
+        </button>
+
+    </div>
+
+</section>
 
 
-            <!-- PHOTO -->
+<!-- FINAL PROPOSAL -->
+<section class="screen" id="finalScreen">
 
-            <div class="photo-wrapper">
+    <div class="glass-card final-card">
 
-                <img
-                    id="memoryPhoto"
-                    src="photo101.jpg"
-                    alt="My Feeling"
-                >
+        <div class="final-heart">💖</div>
 
-                <canvas
-                    id="scratchCanvas">
-                </canvas>
+        <h1>
+            One Last Thing... ❤️
+        </h1>
 
-            </div>
+        <p class="final-description">
+            என் மனதில் இருக்கும் உணர்வுகள்<br>
+            இப்போ உனக்கு தெரிஞ்சிருக்கும்...
 
+            <br><br>
 
-            <!-- SCRATCH HINT -->
+            ஆனால் சொல்ல வேண்டிய ஒன்று<br>
+            இன்னும் இருக்கு...
+        </p>
 
-            <p class="scratch-hint">
-                👆 Scratch பண்ணி என் Feeling-ஐ பாரு ❤️
-            </p>
+        <h2>
+            Will You Be Mine? 💍❤️
+        </h2>
 
+        <p class="choose-text">
+            என் வாழ்க்கையில் என்னுடன் இருப்பாயா? 🥹❤️
+        </p>
 
-            <!-- ================= FEELING MESSAGE ================= -->
+        <div id="answerButtons" class="answer-buttons">
 
-            <div id="specialMessage"
-                 class="special-message">
+            <button id="yesBtn" class="yes-btn">
+                YES 😍❤️
+            </button>
 
-                <div class="message-icon">
-                    💖
-                </div>
-
-                <h3 id="messageTitle">
-                    My Feeling ❤️
-                </h3>
-
-                <p id="messageText">
-                </p>
-
-            </div>
-
-
-            <!-- NEXT -->
-
-            <button id="nextBtn"
-                    class="next-btn">
-
-                Next Feeling ❤️
-
+            <button id="noBtn" class="no-btn">
+                NO 😭💔
             </button>
 
         </div>
 
-    </section>
 
+        <!-- FEEDBACK -->
+        <div id="feedbackBox" class="feedback-box">
 
-    <!-- ================= FINAL PROPOSAL SCREEN ================= -->
+            <div id="feedbackEmoji">💌</div>
 
-    <section class="screen"
-             id="finalScreen">
+            <h3 id="feedbackTitle">
+                My Heart Is Waiting 🫀
+            </h3>
 
-        <div class="glass-card final-card">
-
-            <div class="final-heart">
-                💖
-            </div>
-
-            <h1>
-                One Last Thing... ❤️
-            </h1>
-
-            <p class="final-description">
-
-                என் மனதில் இருக்கும் தேகம் <br>
-                இப்போ உனக்கு தெரிஞ்சிருக்கும்...
-
-                <br><br>
-
-                ஆனால் சொல்ல வேண்டிய ஒன்று <br>
-                இன்னும் இருக்கு...
-
+            <p id="feedbackDescription">
+                உன் உண்மையான பதிலை சொல்லு...
             </p>
 
+            <textarea
+                id="feedback"
+                placeholder="உன் மனதில் என்ன இருக்கிறது? 🥹">
+            </textarea>
 
-            <h2>
-                Will You Be Mine? 💍❤️
-            </h2>
+            <button id="submitBtn" class="submit-btn">
+                Send My Answer 💌
+            </button>
 
-
-            <p class="choose-text">
-                என் வாழ்க்கையில் என்னுடன் இருப்பாயா? 🥹❤️
-            </p>
-
-
-            <!-- YES / NO -->
-
-            <div id="answerButtons"
-                 class="answer-buttons">
-
-                <button id="yesBtn"
-                        class="yes-btn">
-
-                    YES 😍❤️
-
-                </button>
-
-
-                <button id="noBtn"
-                        class="no-btn">
-
-                    NO 😭💔
-
-                </button>
-
-            </div>
-
-
-            <!-- ================= FEEDBACK ================= -->
-
-            <div id="feedbackBox"
-                 class="feedback-box">
-
-                <div id="feedbackEmoji">
-                    💌
-                </div>
-
-
-                <h3 id="feedbackTitle">
-                    My Heart Is Waiting 🫀
-                </h3>
-
-
-                <p id="feedbackDescription">
-                    உன் உண்மையான பதிலை சொல்லு...
-                </p>
-
-
-                <textarea
-                    id="feedback"
-                    placeholder="உன் மனதில் என்ன இருக்கிறது? 🥹">
-                </textarea>
-
-
-                <button id="submitBtn"
-                        class="submit-btn">
-
-                    Send My Answer 💌
-
-                </button>
-
-
-                <p id="submitStatus">
-                </p>
-
-            </div>
+            <p id="submitStatus"></p>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- ================= THANK YOU ================= -->
+<!-- THANK YOU -->
+<section class="screen" id="thankYouScreen">
 
-    <section class="screen"
-             id="thankYouScreen">
+    <div class="glass-card thank-card">
 
-        <div class="glass-card thank-card">
-
-            <div class="thank-heart">
-                💖
-            </div>
-
-
-            <h1>
-                
-            </h1>
-
-
-            <p id="thankMessage">
-                என் தேகத்தை புரிந்து கொண்டு
-                <br>
-                உன் answer-ஐ சொல்லிருப்பாய் என்று நினைக்கிறேன். 🥹❤️
-            </p>
-
-
-            <div class="heart-row">
-                ❤️ 💕 💖 💗 💓
-            </div>
-
+        <div class="thank-heart">
+            💖
         </div>
 
-    </section>
+        <h1>
+            Thank You ❤️
+        </h1>
+
+        <p id="thankMessage">
+            என் உணர்வுகளை புரிந்து கொண்டு
+            <br>
+            உன் answer-ஐ சொல்லிருப்பாய் என்று நினைக்கிறேன். 🥹❤️
+        </p>
+
+        <div class="heart-row">
+            ❤️ 💕 💖 💗 💓
+        </div>
+
+    </div>
+
+</section>
 
 
-    <script src="script.js"></script>
+<script src="script.js"></script>
 
-</body>
-
-</html>
+</body></html>
