@@ -13,7 +13,7 @@ const FORMSPREE_URL =
 
 
 /* =====================================================
-   BACKGROUND SONG
+   BACKGROUND MUSIC
    ===================================================== */
 
 const bgMusic =
@@ -21,89 +21,62 @@ const bgMusic =
 
 
 /* =====================================================
-   6 PHOTOS + MY FEELINGS
+   6 PHOTOS + FEELINGS
    ===================================================== */
 
 const memories = [
 
     {
         image: "photo101.jpg",
-
         heading: "My Feeling 1 ❤️",
-
         messageTitle: "First Feeling 🥰",
-
         message:
-            "நீ வெட்கப்படும் தருணம் என் மனம் கொல்லை போகுதே..! ❤️‍🩹",
+            "நீ வெட்கப்படும் தருணம் என் மனம் கொள்ளை போகுதே..! ❤️‍🩹"
     },
-
 
     {
         image: "photo102.jpg",
-
         heading: "My Feeling 2 💕",
-
         messageTitle: "You Became Special ❤️",
-
         message:
-            "கருமையான இருளுக்கு நிலா அழகு ..!🌜" +
-            "ஏனோ BLACK SAREE-கு  நீ அழகு ..!!🥰💥”
+            "கருமையான இருளுக்கு நிலா அழகு..! 🌜 " +
+            "ஏனோ BLACK SAREE-க்கு நீ அழகு..!! 🥰💥"
     },
-
 
     {
         image: "photo103.jpg",
-
         heading: "My Feeling 3 😍",
-
         messageTitle: "I Started Missing You 💗",
-
         message:
-            "தமிழ் இளைஞர்களுக்கு  'NAZRIYA' Attitude Queen ..!👑 " +
-            "என்னிடத்தில் நீ மட்டுமே Rugged Queen..!! 👑💖",
-
+            "தமிழ் இளைஞர்களுக்கு 'NAZRIYA' Attitude Queen..! 👑 " +
+            "என்னிடத்தில் நீ மட்டுமே Rugged Queen..!! 👑💖"
     },
-
 
     {
         image: "photo104.jpg",
-
         heading: "My Feeling 4 🫶",
-
         messageTitle: "My Heart Chose You ❤️",
-
         message:
-            "நான் இருக்க வேண்டிய இடத்தில் ஏனே தெரியவில்லை..!😇" +
-            "என்ன பாவம் செய்தேனோ மச்சம் உள்ளது..!! 🥀🍂",
-
+            "நான் இருக்க வேண்டிய இடத்தில் ஏனோ தெரியவில்லை..! 😇 " +
+            "என்ன பாவம் செய்தேனோ, மச்சம் உள்ளது..!! 🥀🍂"
     },
-
 
     {
         image: "photo105.jpg",
-
         heading: "My Feeling 5 💞",
-
         messageTitle: "I Want You In My Life 🌹",
-
         message:
-            "குளத்தில் சிக்கிய மீனைப் போல் ..! 🐬💗" +
-            "உன் அழகில் சிக்கி தவிக்கிறேன்..!! 💝💫",
-
+            "குளத்தில் சிக்கிய மீனைப் போல்..! 🐬💗 " +
+            "உன் அழகில் சிக்கி தவிக்கிறேன்..!! 💝💫"
     },
-
 
     {
         image: "photo106.jpg",
-
         heading: "My Feeling 6 💍",
-
         messageTitle: "The Feeling I Can't Hide ❤️",
-
         message:
-            "சீதையை பார்க்கும்போதெல்லாம் மனதில் பாரம் கூடுதே.!❤️‍🩹" +
-            "விரைவில் பாரம் குறைய என்ன செய்வேனோ உன்னிடத்தில்..!! 🤗”,
-
+            "சீதையை பார்க்கும்போதெல்லாம் மனதில் பாரம் கூடுதே..! ❤️‍🩹 " +
+            "விரைவில் பாரம் குறைய என்ன செய்வேனோ உன்னிடத்தில்..!! 🤗"
     }
 
 ];
@@ -188,6 +161,13 @@ const submitStatus =
 const thankMessage =
     document.getElementById("thankMessage");
 
+const heartsContainer =
+    document.getElementById("heartsContainer");
+
+
+/* =====================================================
+   CANVAS
+   ===================================================== */
 
 const ctx =
     scratchCanvas.getContext("2d");
@@ -201,13 +181,15 @@ let currentMemory = 0;
 
 let drawing = false;
 
-let scratchCount = 0;
+let memoryRevealed = false;
+
+let scratchedPixels = 0;
+
+let totalScratchPixels = 0;
 
 let selectedAnswer = "";
 
 let alreadySubmitted = false;
-
-let memoryRevealed = false;
 
 
 /* =====================================================
@@ -219,52 +201,56 @@ function showScreen(screen) {
     document
         .querySelectorAll(".screen")
         .forEach(item => {
-
             item.classList.remove("active");
-
         });
 
     screen.classList.add("active");
 
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 }
 
 
 /* =====================================================
-   OPEN MY HEART + PLAY SONG
+   OPEN MY HEART
    ===================================================== */
 
 openBtn.addEventListener(
     "click",
-    () => {
+    async () => {
 
         currentMemory = 0;
+
+        /* MUSIC */
 
         if (bgMusic) {
 
             bgMusic.volume = 0.45;
 
-            bgMusic.play()
-                .catch(error => {
+            try {
 
-                    console.log(
-                        "Music could not start:",
-                        error
-                    );
+                await bgMusic.play();
 
-                });
+            } catch (error) {
 
+                console.log(
+                    "Music waiting for user interaction."
+                );
+
+            }
         }
 
         showScreen(memoryScreen);
 
         loadMemory();
-
     }
 );
 
 
 /* =====================================================
-   LOAD FEELING
+   LOAD MEMORY
    ===================================================== */
 
 function loadMemory() {
@@ -272,153 +258,203 @@ function loadMemory() {
     const feeling =
         memories[currentMemory];
 
-
     currentNumber.textContent =
         currentMemory + 1;
-
 
     memoryHeading.textContent =
         feeling.heading;
 
-
     memoryPhoto.src =
         feeling.image;
-
 
     messageTitle.textContent =
         feeling.messageTitle;
 
-
     messageText.textContent =
         feeling.message;
-
 
     specialMessage.classList.remove(
         "show"
     );
 
-
     nextBtn.classList.remove(
         "show"
     );
 
-
     scratchHint.style.display =
         "block";
 
+    memoryRevealed =
+        false;
 
-    scratchCount = 0;
+    drawing =
+        false;
 
-    memoryRevealed = false;
-
+    scratchedPixels =
+        0;
 
     scratchCanvas.style.pointerEvents =
         "auto";
 
+    /*
+     * Wait for image/container size
+     */
 
-    setupScratch();
+    requestAnimationFrame(() => {
 
+        setupScratch();
+
+    });
 }
 
 
 /* =====================================================
-   SETUP SCRATCH
+   SETUP SCRATCH CANVAS
    ===================================================== */
 
 function setupScratch() {
 
-    requestAnimationFrame(() => {
+    const rect =
+        scratchCanvas.getBoundingClientRect();
 
-        scratchCanvas.width =
-            scratchCanvas.offsetWidth;
+    const width =
+        Math.floor(rect.width);
 
-        scratchCanvas.height =
-            scratchCanvas.offsetHeight;
+    const height =
+        Math.floor(rect.height);
 
+    if (
+        width <= 0 ||
+        height <= 0
+    ) {
 
-        ctx.globalCompositeOperation =
-            "source-over";
+        setTimeout(
+            setupScratch,
+            100
+        );
 
-
-        /* ================= COVER ================= */
-
-        const gradient =
-            ctx.createLinearGradient(
-                0,
-                0,
-                scratchCanvas.width,
-                scratchCanvas.height
-            );
+        return;
+    }
 
 
-        gradient.addColorStop(
+    /*
+     * High DPI support
+     */
+
+    const dpr =
+        Math.min(
+            window.devicePixelRatio || 1,
+            2
+        );
+
+
+    scratchCanvas.width =
+        width * dpr;
+
+    scratchCanvas.height =
+        height * dpr;
+
+
+    ctx.setTransform(
+        dpr,
+        0,
+        0,
+        dpr,
+        0,
+        0
+    );
+
+
+    ctx.globalCompositeOperation =
+        "source-over";
+
+
+    /* =================================================
+       SCRATCH COVER
+       ================================================= */
+
+    const gradient =
+        ctx.createLinearGradient(
             0,
-            "#ff4c9b"
-        );
-
-
-        gradient.addColorStop(
-            0.5,
-            "#871644"
-        );
-
-
-        gradient.addColorStop(
-            1,
-            "#ff7fba"
-        );
-
-
-        ctx.fillStyle =
-            gradient;
-
-
-        ctx.fillRect(
             0,
-            0,
-            scratchCanvas.width,
-            scratchCanvas.height
+            width,
+            height
         );
 
 
-        /* ================= TEXT ================= */
+    gradient.addColorStop(
+        0,
+        "#ff4c9b"
+    );
 
-        ctx.fillStyle =
-            "rgba(255,255,255,0.95)";
+    gradient.addColorStop(
+        0.5,
+        "#871644"
+    );
 
-
-        ctx.textAlign =
-            "center";
-
-
-        ctx.textBaseline =
-            "middle";
-
-
-        const fontSize =
-            Math.max(
-                18,
-                scratchCanvas.width * 0.06
-            );
+    gradient.addColorStop(
+        1,
+        "#ff7fba"
+    );
 
 
-        ctx.font =
-            `bold ${fontSize}px Arial`;
+    ctx.fillStyle =
+        gradient;
 
 
-        ctx.fillText(
-            "Scratch To Reveal My Feeling ❤️",
-            scratchCanvas.width / 2,
-            scratchCanvas.height / 2
+    ctx.fillRect(
+        0,
+        0,
+        width,
+        height
+    );
+
+
+    /* =================================================
+       COVER TEXT
+       ================================================= */
+
+    ctx.fillStyle =
+        "rgba(255,255,255,0.95)";
+
+
+    ctx.textAlign =
+        "center";
+
+    ctx.textBaseline =
+        "middle";
+
+
+    const fontSize =
+        Math.max(
+            16,
+            width * 0.055
         );
 
-    });
+
+    ctx.font =
+        `bold ${fontSize}px Arial`;
+
+
+    ctx.fillText(
+        "Scratch To Reveal ❤️",
+        width / 2,
+        height / 2
+    );
+
+
+    /*
+     * Approximate pixel count.
+     */
+
+    totalScratchPixels =
+        width * height;
 
 }
 
 
 /* =====================================================
-   GET POSITION
+   GET POINTER POSITION
    ===================================================== */
 
 function getPosition(event) {
@@ -428,11 +464,13 @@ function getPosition(event) {
 
 
     let clientX;
-
     let clientY;
 
 
-    if (event.touches) {
+    if (
+        event.touches &&
+        event.touches.length > 0
+    ) {
 
         clientX =
             event.touches[0].clientX;
@@ -440,16 +478,13 @@ function getPosition(event) {
         clientY =
             event.touches[0].clientY;
 
-    }
-
-    else {
+    } else {
 
         clientX =
             event.clientX;
 
         clientY =
             event.clientY;
-
     }
 
 
@@ -460,21 +495,18 @@ function getPosition(event) {
 
         y:
             clientY - rect.top
-
     };
-
 }
 
 
 /* =====================================================
-   SCRATCH
+   SCRATCH FUNCTION
    ===================================================== */
 
 function scratch(event) {
 
     if (!drawing)
         return;
-
 
     if (memoryRevealed)
         return;
@@ -483,6 +515,10 @@ function scratch(event) {
     const pos =
         getPosition(event);
 
+
+    /*
+     * Erase scratch area
+     */
 
     ctx.globalCompositeOperation =
         "destination-out";
@@ -494,7 +530,7 @@ function scratch(event) {
     ctx.arc(
         pos.x,
         pos.y,
-        32,
+        38,
         0,
         Math.PI * 2
     );
@@ -503,19 +539,33 @@ function scratch(event) {
     ctx.fill();
 
 
-    scratchCount++;
+    /*
+     * Increase scratch amount
+     */
+
+    scratchedPixels +=
+        Math.PI * 38 * 38;
 
 
     /*
-     * Reveal after enough scratching
+     * Reveal after approximately
+     * 30% scratch coverage.
      */
 
-    if (scratchCount >= 35) {
+    const percentage =
+        (
+            scratchedPixels /
+            totalScratchPixels
+        ) * 100;
+
+
+    if (
+        percentage >= 30
+    ) {
 
         revealMemory();
 
     }
-
 }
 
 
@@ -525,11 +575,20 @@ function scratch(event) {
 
 scratchCanvas.addEventListener(
     "mousedown",
-    () => {
+    event => {
+
+        event.preventDefault();
 
         drawing = true;
 
+        scratch(event);
     }
+);
+
+
+scratchCanvas.addEventListener(
+    "mousemove",
+    scratch
 );
 
 
@@ -550,12 +609,6 @@ scratchCanvas.addEventListener(
         drawing = false;
 
     }
-);
-
-
-scratchCanvas.addEventListener(
-    "mousemove",
-    scratch
 );
 
 
@@ -597,16 +650,21 @@ scratchCanvas.addEventListener(
 
 scratchCanvas.addEventListener(
     "touchend",
-    () => {
+    event => {
+
+        event.preventDefault();
 
         drawing = false;
 
+    },
+    {
+        passive: false
     }
 );
 
 
 /* =====================================================
-   REVEAL FEELING
+   REVEAL MEMORY
    ===================================================== */
 
 function revealMemory() {
@@ -615,8 +673,13 @@ function revealMemory() {
         return;
 
 
-    memoryRevealed = true;
+    memoryRevealed =
+        true;
 
+
+    /*
+     * Clear scratch cover
+     */
 
     ctx.clearRect(
         0,
@@ -634,23 +697,24 @@ function revealMemory() {
         "none";
 
 
+    /*
+     * Show message
+     */
+
     setTimeout(() => {
 
         specialMessage.classList.add(
             "show"
         );
 
-
         nextBtn.classList.add(
             "show"
         );
 
-
-    }, 250);
+    }, 200);
 
 
     createHeartBurst();
-
 }
 
 
@@ -666,7 +730,7 @@ nextBtn.addEventListener(
 
 
         /*
-         * After all 6 feelings
+         * All 6 completed
          */
 
         if (
@@ -678,12 +742,9 @@ nextBtn.addEventListener(
                 finalScreen
             );
 
-
             createHeartBurst();
 
-
             return;
-
         }
 
 
@@ -694,7 +755,7 @@ nextBtn.addEventListener(
 
 
 /* =====================================================
-   YES — LOVE PROPOSAL
+   YES BUTTON
    ===================================================== */
 
 yesBtn.addEventListener(
@@ -714,12 +775,11 @@ yesBtn.addEventListener(
 
 
         feedbackDescription.textContent =
-            "என் மனசுக்கு இதைவிட அழகான answer வேற எதுவும் இருக்க முடியாது... " +
+            "என் மனதில் இருக்கும் தேகத்தை உன்னிடத்தில் கொடுத்துள்ளேன் 🤍" + 
             "உன் மனதில் இருக்கிறதை என்னிடம் சொல்லு. ❤️";
 
 
         openFeedback();
-
 
         createHeartBurst();
 
@@ -728,7 +788,7 @@ yesBtn.addEventListener(
 
 
 /* =====================================================
-   NO
+   NO BUTTON
    ===================================================== */
 
 noBtn.addEventListener(
@@ -744,12 +804,11 @@ noBtn.addEventListener(
 
 
         feedbackTitle.textContent =
-            "Thank You For Being Honest ❤️";
+            "Your For Being Honest ❤️";
 
 
         feedbackDescription.textContent =
-            "உன் answer-காக நான் wait பன்ற. 🥺 " +
-            "உன் உண்மையான feeling-ஐ சொல்லு. ❤️";
+            "உன் answer-க்காக நான் wait பண்ணுறேன். 😍"
 
 
         openFeedback();
@@ -772,6 +831,9 @@ function openFeedback() {
         "show"
     );
 
+
+    feedback.focus();
+
 }
 
 
@@ -789,6 +851,9 @@ submitBtn.addEventListener(
 
         submitBtn.disabled =
             true;
+
+        submitStatus.textContent =
+            "";
 
 
         submitBtn.textContent =
@@ -851,9 +916,8 @@ submitBtn.addEventListener(
             if (!response.ok) {
 
                 throw new Error(
-                    "Submission failed"
+                    "Formspree submission failed"
                 );
-
             }
 
 
@@ -861,26 +925,30 @@ submitBtn.addEventListener(
                 true;
 
 
-            /* ================= YES ================= */
+            /* =========================================
+               YES RESPONSE
+               ========================================= */
 
             if (
                 selectedAnswer
                     .startsWith("YES")
             ) {
 
-                thankMessage.textContent =
-                    "உன் YES answer எனக்கு கிடைத்து விடும். 🥹❤️ " +
-                    "இனி இந்த beautiful moment என் heart-ல special-ஆ இருக்கும்னு நினைக்கிறேன். 💍💕";
+                thankMessage.innerHTML =
+                    "உன் விருப்பமத்தில், beautiful moment என் heart-ல " +
+                    "special-ஆ இருக்கும்னு நினைக்கிறேன்.💍💕";
 
             }
 
 
-            /* ================= NO ================= */
+            /* =========================================
+               NO RESPONSE
+               ========================================= */
 
             else {
 
-                thankMessage.textContent =
-                    "உன் answerஎனக்கு முக்கிம். ❤️ "
+                thankMessage.innerHTML =
+                    "உன் answer எனக்கு முக்கியம். ❤️" 
 
             }
 
@@ -892,18 +960,19 @@ submitBtn.addEventListener(
 
             createHeartBurst();
 
-
         }
+
 
         catch (error) {
 
             console.error(
+                "Formspree Error:",
                 error
             );
 
 
             submitStatus.textContent =
-                "Something went wrong. Please try again.";
+                "Something went wrong. Please try again. 😔";
 
 
             submitBtn.disabled =
@@ -924,6 +993,10 @@ submitBtn.addEventListener(
    ===================================================== */
 
 function createFloatingHeart() {
+
+    if (!heartsContainer)
+        return;
+
 
     const heart =
         document.createElement("div");
@@ -961,20 +1034,22 @@ function createFloatingHeart() {
 
 
     heart.style.fontSize =
-        (15 + Math.random() * 20) +
-        "px";
+        (
+            15 +
+            Math.random() * 20
+        ) + "px";
 
 
     heart.style.animationDuration =
-        (5 + Math.random() * 5) +
-        "s";
+        (
+            5 +
+            Math.random() * 5
+        ) + "s";
 
 
-    document
-        .getElementById(
-            "heartsContainer"
-        )
-        .appendChild(heart);
+    heartsContainer.appendChild(
+        heart
+    );
 
 
     setTimeout(
@@ -985,12 +1060,11 @@ function createFloatingHeart() {
         },
         10000
     );
-
 }
 
 
 /* =====================================================
-   CONTINUOUS HEARTS
+   CONTINUOUS FLOATING HEARTS
    ===================================================== */
 
 setInterval(
@@ -1017,5 +1091,30 @@ function createHeartBurst() {
         );
 
     }
+}
 
-  }
+
+/* =====================================================
+   WINDOW RESIZE
+   ===================================================== */
+
+window.addEventListener(
+    "resize",
+    () => {
+
+        /*
+         * Don't rebuild scratch canvas
+         * after user has started scratching.
+         */
+
+        if (
+            !memoryRevealed &&
+            memoryScreen.classList.contains("active")
+        ) {
+
+            setupScratch();
+
+        }
+
+    }
+);
