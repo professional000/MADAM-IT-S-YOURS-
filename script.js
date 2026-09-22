@@ -27,94 +27,83 @@ const bgMusic =
 const memories = [
 
     {
-        image: "photo11.jpg",
+        image: "photo101.jpg",
 
         heading: "My Feeling 1 ❤️",
 
         messageTitle: "First Feeling 🥰",
 
         message:
-            "உன்னை முதலில் பார்த்த அந்த நொடியிலேயே " +
-            "என் மனசுக்குள் ஏதோ ஒரு அழகான feeling வந்தது... " +
-            "அது என்னன்னு அப்போது புரியவில்லை. " +
-            "இப்போ புரிகிறது... அது காதல்! ❤️"
+            "நீ வெட்கப்படும் தருணம் என் மனம் கொல்லை போகுதே..! ❤️‍🩹",
     },
 
 
     {
-        image: "photo12.jpg",
+        image: "photo102.jpg",
 
         heading: "My Feeling 2 💕",
 
         messageTitle: "You Became Special ❤️",
 
         message:
-            "எல்லாரையும் போல உன்னை பார்க்க ஆரம்பித்தேன்... " +
-            "ஆனா கொஞ்சம் கொஞ்சமாக " +
-            "என் பார்வையில் நீ மட்டும் special ஆகிட்ட. " +
-            "என் மனசுக்கு பிடித்த ஒருத்தியாக மாறிட்ட. 🥹❤️"
+            "கருமையான இருளுக்கு நிலா அழகு ..!🌜" +
+            "ஏனோ BLACK SAREE-கு  நீ அழகு ..!!🥰💥”
     },
 
 
     {
-        image: "photo13.jpg",
+        image: "photo103.jpg",
 
         heading: "My Feeling 3 😍",
 
         messageTitle: "I Started Missing You 💗",
 
         message:
-            "உன்னிடம் பேசாத நாளில் ஏதோ ஒன்று missing மாதிரி இருக்கும்... " +
-            "உன் ஒரு message வந்தாலே smile வரும். " +
-            "அப்போதுதான் புரிந்தது... " +
-            "நீ என் வாழ்க்கையில் ஒரு important person ஆகிட்ட. ❤️"
+            "தமிழ் இளைஞர்களுக்கு  'NAZRIYA' Attitude Queen ..!👑 " +
+            "என்னிடத்தில் நீ மட்டுமே Rugged Queen..!! 👑💖",
+
     },
 
 
     {
-        image: "photo14.jpg",
+        image: "photo104.jpg",
 
         heading: "My Feeling 4 🫶",
 
         messageTitle: "My Heart Chose You ❤️",
 
         message:
-            "நான் யோசித்து உன்னை choose பண்ணல... " +
-            "என் heart தான் உன்னை choose பண்ணிச்சு. " +
-            "எவ்வளவு பேர் வாழ்க்கையில் வந்தாலும், " +
-            "என் மனசுக்கு பிடித்தவள் நீ மட்டும் தான். 🥹💖"
+            "நான் இருக்க வேண்டிய இடத்தில் ஏனே தெரியவில்லை..!😇" +
+            "என்ன பாவம் செய்தேனோ மச்சம் உள்ளது..!! 🥀🍂",
+
     },
 
 
     {
-        image: "photo15.jpg",
+        image: "photo105.jpg",
 
         heading: "My Feeling 5 💞",
 
         messageTitle: "I Want You In My Life 🌹",
 
         message:
-            "என் சந்தோஷமான moments-ல மட்டும் இல்லாமல்... " +
-            "என் கஷ்டமான moments-லயும் " +
-            "என்னுடன் நீ இருக்கணும். " +
-            "என் வாழ்க்கையின் ஒரு அழகான பகுதியாக இல்லாமல், " +
-            "என் வாழ்க்கையாகவே இருக்கணும். ❤️"
+            "குளத்தில் சிக்கிய மீனைப் போல் ..! 🐬💗" +
+            "உன் அழகில் சிக்கி தவிக்கிறேன்..!! 💝💫",
+
     },
 
 
     {
-        image: "photo16.jpg",
+        image: "photo106.jpg",
 
         heading: "My Feeling 6 💍",
 
         messageTitle: "The Feeling I Can't Hide ❤️",
 
         message:
-            "இத்தனை நாள் என் மனசுக்குள் வைத்திருந்த " +
-            "ஒரே ஒரு உண்மையை இப்போ சொல்லணும்... " +
-            "நான் உன்னை உண்மையாக காதலிக்கிறேன். ❤️ " +
-            "என் வாழ்க்கையை உன்னுடன் share பண்ண ஆசைப்படுறேன். " +
-            "இது தான் என் உண்மையான Feeling. 🥹💍"
+            "சீதையை பார்க்கும்போதெல்லாம் மனதில் பாரம் கூடுதே.!❤️‍🩹" +
+            "விரைவில் பாரம் குறைய என்ன செய்வேனோ உன்னிடத்தில்..!! 🤗”,
+
     }
 
 ];
@@ -759,8 +748,8 @@ noBtn.addEventListener(
 
 
         feedbackDescription.textContent =
-            "உன் answer-ஐ நான் respect பண்ணுகிறேன். " +
-            "உன் உண்மையான feeling-ஐ சொல்லலாம். ❤️";
+            "உன் answer-காக நான் wait பன்ற. 🥺 " +
+            "உன் உண்மையான feeling-ஐ சொல்லு. ❤️";
 
 
         openFeedback();
@@ -880,8 +869,8 @@ submitBtn.addEventListener(
             ) {
 
                 thankMessage.textContent =
-                    "உன் YES answer எனக்கு கிடைத்துவிட்டது. 🥹❤️ " +
-                    "இனி இந்த beautiful moment என் heart-ல special-ஆ இருக்கும். 💍💕";
+                    "உன் YES answer எனக்கு கிடைத்து விடும். 🥹❤️ " +
+                    "இனி இந்த beautiful moment என் heart-ல special-ஆ இருக்கும்னு நினைக்கிறேன். 💍💕";
 
             }
 
@@ -891,8 +880,7 @@ submitBtn.addEventListener(
             else {
 
                 thankMessage.textContent =
-                    "உன் answer மற்றும் feedback எனக்கு கிடைத்துவிட்டது. ❤️ " +
-                    "உன் honesty-க்கு நன்றி. 🙏";
+                    "உன் answerஎனக்கு முக்கிம். ❤️ "
 
             }
 
