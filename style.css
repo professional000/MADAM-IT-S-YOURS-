@@ -1,0 +1,1279 @@
+/* =====================================================
+   MY FEELINGS ❤️
+   LOVE PROPOSAL WEBSITE
+   ===================================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+
+    font-family:
+        Arial,
+        "Noto Sans Tamil",
+        sans-serif;
+
+    color: #ffffff;
+
+    background:
+
+        radial-gradient(
+            circle at 15% 15%,
+            rgba(255, 55, 145, 0.35),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 85% 25%,
+            rgba(255, 0, 102, 0.22),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 50% 100%,
+            rgba(255, 80, 170, 0.18),
+            transparent 35%
+        ),
+
+        linear-gradient(
+            135deg,
+            #100006,
+            #450a2d,
+            #180008
+        );
+
+    overflow-x: hidden;
+}
+
+
+/* =====================================================
+   SCREEN
+   ===================================================== */
+
+.screen {
+
+    min-height: 100vh;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+}
+
+.screen.active {
+
+    display: flex;
+
+    animation:
+        screenIn 0.7s ease;
+
+}
+
+
+/* =====================================================
+   GLASS CARD
+   ===================================================== */
+
+.glass-card {
+
+    width: 100%;
+    max-width: 500px;
+
+    padding: 30px 22px;
+
+    text-align: center;
+
+    border-radius: 30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.12),
+            rgba(255,255,255,0.045)
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,0.22);
+
+    backdrop-filter:
+        blur(20px);
+
+    -webkit-backdrop-filter:
+        blur(20px);
+
+    box-shadow:
+
+        0 25px 80px
+        rgba(0,0,0,0.55),
+
+        inset 0 0 35px
+        rgba(255,70,160,0.05);
+
+}
+
+
+/* =====================================================
+   START SCREEN
+   ===================================================== */
+
+.gift-icon {
+
+    font-size: 75px;
+
+    margin-bottom: 15px;
+
+    filter:
+        drop-shadow(
+            0 0 18px
+            rgba(255,90,170,0.65)
+        );
+
+    animation:
+        floating 2.2s
+        ease-in-out infinite;
+
+}
+
+
+.start-card h1 {
+
+    font-size: 38px;
+
+    margin-bottom: 15px;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #ffb5d8,
+            #ffffff
+        );
+
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color:
+        transparent;
+
+}
+
+
+.start-card p {
+
+    font-size: 17px;
+
+    line-height: 1.7;
+
+}
+
+
+.small-note {
+
+    margin-top: 12px;
+
+    font-size: 14px !important;
+
+    color: #ffc7df;
+
+    opacity: 0.8;
+
+}
+
+
+/* =====================================================
+   BUTTON
+   ===================================================== */
+
+button {
+
+    border: none;
+
+    cursor: pointer;
+
+    font-family: inherit;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    border-radius: 50px;
+
+    transition:
+
+        transform 0.25s ease,
+
+        box-shadow 0.25s ease,
+
+        opacity 0.25s ease;
+
+}
+
+
+button:hover {
+
+    transform:
+        translateY(-3px);
+
+}
+
+
+button:active {
+
+    transform:
+        scale(0.95);
+
+}
+
+
+/* =====================================================
+   OPEN HEART BUTTON
+   ===================================================== */
+
+#openBtn {
+
+    margin-top: 25px;
+
+    padding: 15px 30px;
+
+    color: white;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #ff59aa,
+            #ff075d
+        );
+
+    box-shadow:
+
+        0 10px 30px
+        rgba(255,30,120,0.45),
+
+        0 0 25px
+        rgba(255,50,150,0.18);
+
+}
+
+
+/* =====================================================
+   COUNTER
+   ===================================================== */
+
+.counter {
+
+    display: inline-block;
+
+    padding: 8px 18px;
+
+    margin-bottom: 15px;
+
+    border-radius: 50px;
+
+    background:
+        rgba(255,255,255,0.10);
+
+    border:
+        1px solid
+        rgba(255,160,205,0.18);
+
+    color: #ffd2e6;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    box-shadow:
+        0 5px 20px
+        rgba(0,0,0,0.15);
+
+}
+
+
+/* =====================================================
+   MY FEELING HEADING
+   ===================================================== */
+
+.memory-card h2 {
+
+    font-size: 25px;
+
+    margin-bottom: 20px;
+
+    color: #ffd0e4;
+
+    text-shadow:
+
+        0 0 15px
+        rgba(255,80,160,0.35);
+
+}
+
+
+/* =====================================================
+   PHOTO
+   ===================================================== */
+
+.photo-wrapper {
+
+    position: relative;
+
+    width: 100%;
+
+    max-width: 390px;
+
+    aspect-ratio: 3 / 4;
+
+    margin: auto;
+
+    overflow: hidden;
+
+    border-radius: 24px;
+
+    background: #090006;
+
+    box-shadow:
+
+        0 15px 45px
+        rgba(0,0,0,0.55),
+
+        0 0 30px
+        rgba(255,50,150,0.12);
+
+}
+
+
+#memoryPhoto {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+}
+
+
+#scratchCanvas {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    touch-action: none;
+
+    cursor: crosshair;
+
+}
+
+
+/* =====================================================
+   SCRATCH HINT
+   ===================================================== */
+
+.scratch-hint {
+
+    margin-top: 14px;
+
+    font-size: 14px;
+
+    color: #ffc9df;
+
+    opacity: 0.82;
+
+    animation:
+        hintPulse 1.8s
+        ease-in-out infinite;
+
+}
+
+
+/* =====================================================
+   SPECIAL FEELING MESSAGE
+   ===================================================== */
+
+.special-message {
+
+    display: none;
+
+    margin-top: 22px;
+
+    padding: 23px 18px;
+
+    border-radius: 23px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            rgba(255,79,163,0.20),
+            rgba(255,255,255,0.06)
+        );
+
+    border:
+
+        1px solid
+        rgba(255,158,205,0.38);
+
+    box-shadow:
+
+        inset 0 0 30px
+        rgba(255,50,140,0.07),
+
+        0 10px 35px
+        rgba(0,0,0,0.25);
+
+    animation:
+        messageIn 0.7s ease;
+
+}
+
+
+.special-message.show {
+
+    display: block;
+
+}
+
+
+.message-icon {
+
+    font-size: 36px;
+
+    margin-bottom: 8px;
+
+    filter:
+        drop-shadow(
+            0 0 12px
+            rgba(255,80,170,0.5)
+        );
+
+}
+
+
+.special-message h3 {
+
+    font-size: 21px;
+
+    margin-bottom: 12px;
+
+    color: #ffb8d9;
+
+}
+
+
+.special-message p {
+
+    font-size: 16px;
+
+    line-height: 1.85;
+
+    color: #ffe5f2;
+
+}
+
+
+/* =====================================================
+   NEXT FEELING BUTTON
+   ===================================================== */
+
+.next-btn {
+
+    display: none;
+
+    margin: 20px auto 0;
+
+    padding: 13px 27px;
+
+    color: white;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #ff4fa3,
+            #ff176c
+        );
+
+    box-shadow:
+
+        0 8px 25px
+        rgba(255,30,120,0.35);
+
+}
+
+
+.next-btn.show {
+
+    display: block;
+
+    animation:
+        buttonAppear 0.5s ease;
+
+}
+
+
+/* =====================================================
+   FINAL LOVE PROPOSAL
+   ===================================================== */
+
+.final-heart {
+
+    font-size: 78px;
+
+    filter:
+        drop-shadow(
+            0 0 25px
+            rgba(255,50,150,0.7)
+        );
+
+    animation:
+        heartbeat 1.2s infinite;
+
+}
+
+
+.final-card h1 {
+
+    font-size: 32px;
+
+    margin-top: 10px;
+
+    color: #ffffff;
+
+}
+
+
+.final-description {
+
+    margin-top: 15px;
+
+    line-height: 1.75;
+
+    color: #ffe3ef;
+
+    opacity: 0.92;
+
+}
+
+
+.final-card h2 {
+
+    margin-top: 23px;
+
+    font-size: 30px;
+
+    color: #ffb8da;
+
+    text-shadow:
+
+        0 0 18px
+        rgba(255,80,160,0.5);
+
+}
+
+
+.choose-text {
+
+    margin-top: 10px;
+
+    font-size: 14px;
+
+    color: #ffd2e3;
+
+    opacity: 0.75;
+
+}
+
+
+/* =====================================================
+   YES / NO
+   ===================================================== */
+
+.answer-buttons {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    margin-top: 27px;
+
+}
+
+
+.answer-buttons button {
+
+    min-width: 130px;
+
+    padding: 15px 22px;
+
+}
+
+
+.yes-btn {
+
+    color: white;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #ff55a7,
+            #ff075d
+        );
+
+    box-shadow:
+
+        0 10px 30px
+        rgba(255,0,90,0.4),
+
+        0 0 25px
+        rgba(255,60,150,0.18);
+
+    animation:
+        yesGlow 2s
+        ease-in-out infinite;
+
+}
+
+
+.no-btn {
+
+    color: white;
+
+    background:
+        rgba(255,255,255,0.11);
+
+    border:
+
+        1px solid
+        rgba(255,255,255,0.20);
+
+}
+
+
+/* =====================================================
+   FEEDBACK
+   ===================================================== */
+
+.feedback-box {
+
+    display: none;
+
+    margin-top: 25px;
+
+    animation:
+        messageIn 0.5s ease;
+
+}
+
+
+.feedback-box.show {
+
+    display: block;
+
+}
+
+
+#feedbackEmoji {
+
+    font-size: 38px;
+
+    margin-bottom: 8px;
+
+}
+
+
+.feedback-box h3 {
+
+    font-size: 22px;
+
+    margin-bottom: 8px;
+
+    color: #ffc2dc;
+
+}
+
+
+.feedback-box p {
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+}
+
+
+textarea {
+
+    width: 100%;
+
+    min-height: 110px;
+
+    margin-top: 15px;
+
+    padding: 14px;
+
+    resize: vertical;
+
+    outline: none;
+
+    color: white;
+
+    font-family: inherit;
+
+    font-size: 15px;
+
+    line-height: 1.5;
+
+    border-radius: 16px;
+
+    border:
+
+        1px solid
+        rgba(255,255,255,0.25);
+
+    background:
+        rgba(0,0,0,0.25);
+
+}
+
+
+textarea:focus {
+
+    border-color:
+        rgba(255,120,180,0.7);
+
+    box-shadow:
+
+        0 0 20px
+        rgba(255,60,150,0.12);
+
+}
+
+
+textarea::placeholder {
+
+    color:
+        rgba(255,255,255,0.55);
+
+}
+
+
+.submit-btn {
+
+    margin-top: 15px;
+
+    padding: 14px 25px;
+
+    color: white;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #ff4fa3,
+            #ff176c
+        );
+
+    box-shadow:
+
+        0 8px 25px
+        rgba(255,30,120,0.28);
+
+}
+
+
+.submit-btn:disabled {
+
+    opacity: 0.6;
+
+    cursor: not-allowed;
+
+}
+
+
+#submitStatus {
+
+    margin-top: 12px;
+
+    color: #ffb9d7;
+
+}
+
+
+/* =====================================================
+   THANK YOU
+   ===================================================== */
+
+.thank-heart {
+
+    font-size: 82px;
+
+    filter:
+        drop-shadow(
+            0 0 25px
+            rgba(255,60,160,0.65)
+        );
+
+    animation:
+        heartbeat 1.2s infinite;
+
+}
+
+
+.thank-card h1 {
+
+    font-size: 36px;
+
+    margin: 15px 0;
+
+    color: #ffc4df;
+
+}
+
+
+.thank-card p {
+
+    line-height: 1.8;
+
+    color: #ffe5f1;
+
+}
+
+
+.heart-row {
+
+    margin-top: 22px;
+
+    font-size: 25px;
+
+    letter-spacing: 7px;
+
+}
+
+
+/* =====================================================
+   FLOATING HEARTS
+   ===================================================== */
+
+#heartsContainer {
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    z-index: 999;
+
+}
+
+
+.floating-heart {
+
+    position: absolute;
+
+    bottom: -30px;
+
+    animation:
+        heartRise
+        linear
+        forwards;
+
+    filter:
+        drop-shadow(
+            0 0 7px
+            rgba(255,80,160,0.45)
+        );
+
+}
+
+
+/* =====================================================
+   ANIMATIONS
+   ===================================================== */
+
+@keyframes floating {
+
+    0%,
+    100% {
+
+        transform:
+            translateY(0);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-12px);
+
+    }
+
+}
+
+
+@keyframes heartbeat {
+
+    0%,
+    100% {
+
+        transform:
+            scale(1);
+
+    }
+
+    50% {
+
+        transform:
+            scale(1.15);
+
+    }
+
+}
+
+
+@keyframes heartRise {
+
+    0% {
+
+        transform:
+            translateY(0)
+            rotate(0deg);
+
+        opacity: 0;
+
+    }
+
+    15% {
+
+        opacity: 0.9;
+
+    }
+
+    100% {
+
+        transform:
+            translateY(-110vh)
+            rotate(360deg);
+
+        opacity: 0;
+
+    }
+
+}
+
+
+@keyframes screenIn {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(18px)
+            scale(0.98);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+
+@keyframes messageIn {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(22px)
+            scale(0.95);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+
+@keyframes buttonAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(15px)
+            scale(0.95);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+
+@keyframes hintPulse {
+
+    0%,
+    100% {
+
+        opacity: 0.55;
+
+    }
+
+    50% {
+
+        opacity: 1;
+
+    }
+
+}
+
+
+@keyframes yesGlow {
+
+    0%,
+    100% {
+
+        box-shadow:
+            0 10px 30px
+            rgba(255,0,90,0.35);
+
+    }
+
+    50% {
+
+        box-shadow:
+
+            0 10px 35px
+            rgba(255,0,90,0.55),
+
+            0 0 25px
+            rgba(255,70,160,0.25);
+
+    }
+
+}
+
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+
+@media (max-width: 600px) {
+
+    .screen {
+
+        padding: 14px;
+
+        align-items: center;
+
+    }
+
+
+    .glass-card {
+
+        padding: 25px 15px;
+
+        border-radius: 25px;
+
+    }
+
+
+    .gift-icon {
+
+        font-size: 68px;
+
+    }
+
+
+    .start-card h1 {
+
+        font-size: 31px;
+
+    }
+
+
+    .start-card p {
+
+        font-size: 16px;
+
+    }
+
+
+    .memory-card h2 {
+
+        font-size: 22px;
+
+    }
+
+
+    .photo-wrapper {
+
+        max-width: 100%;
+
+        border-radius: 20px;
+
+    }
+
+
+    .special-message {
+
+        padding: 20px 15px;
+
+    }
+
+
+    .special-message p {
+
+        font-size: 15px;
+
+        line-height: 1.8;
+
+    }
+
+
+    .final-heart {
+
+        font-size: 68px;
+
+    }
+
+
+    .final-card h1 {
+
+        font-size: 27px;
+
+    }
+
+
+    .final-card h2 {
+
+        font-size: 25px;
+
+    }
+
+
+    .answer-buttons {
+
+        gap: 10px;
+
+    }
+
+
+    .answer-buttons button {
+
+        min-width: 115px;
+
+        padding: 13px 16px;
+
+    }
+
+
+    .yes-btn {
+
+        font-size: 15px;
+
+    }
+
+
+    .no-btn {
+
+        font-size: 15px;
+
+    }
+
+}
+
+
+/* =====================================================
+   VERY SMALL MOBILE
+   ===================================================== */
+
+@media (max-width: 380px) {
+
+    .glass-card {
+
+        padding: 22px 12px;
+
+    }
+
+
+    .start-card h1 {
+
+        font-size: 28px;
+
+    }
+
+
+    .memory-card h2 {
+
+        font-size: 20px;
+
+    }
+
+
+    .answer-buttons {
+
+        flex-direction: column;
+
+        align-items: center;
+
+    }
+
+
+    .answer-buttons button {
+
+        width: 80%;
+
+    }
+
+              }
