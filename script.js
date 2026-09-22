@@ -808,7 +808,7 @@ noBtn.addEventListener(
 
 
         feedbackDescription.textContent =
-            "உன் answer-க்காக நான் wait பண்ணுறேன். 😍"
+            "உன் பதிலுக்காக நான் wait பண்ணுறேன். 😭"
 
 
         openFeedback();
@@ -935,8 +935,7 @@ submitBtn.addEventListener(
             ) {
 
                 thankMessage.innerHTML =
-                    "உன் விருப்பமத்தில், beautiful moment என் heart-ல " +
-                    "special-ஆ இருக்கும்னு நினைக்கிறேன்.💍💕";
+                    "நம் விருப்பத்தில், இனி நாம் இருவரும் சேர்ந்து வாழ்க்கை பயணம் செய்வோம்"💞🫂💋❣️
 
             }
 
@@ -948,7 +947,7 @@ submitBtn.addEventListener(
             else {
 
                 thankMessage.innerHTML =
-                    "உன் answer எனக்கு முக்கியம். ❤️" 
+                    "உன் நினைவுகளில் நான் 🥺" 
 
             }
 
