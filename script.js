@@ -808,7 +808,7 @@ noBtn.addEventListener(
 
 
         feedbackDescription.textContent =
-            "உன் பதிலுக்காக நான் wait பண்ணுறேன். 😭"
+            "உன் பதிலுக்காக நான் wait பண்ணுறேன் 😭 ";
 
 
         openFeedback();
