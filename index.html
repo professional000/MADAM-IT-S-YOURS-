@@ -1,196 +1,470 @@
 <!DOCTYPE html><html lang="ta"><head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#17000d"><title>My Feelings ❤️</title>
+    <meta charset="UTF-8"><meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<meta name="theme-color"
+      content="#17000d">
+
+<title>My Feelings ❤️</title>
 
 <link rel="stylesheet" href="style.css">
 
-</head><body><!-- MUSIC -->
-<audio id="bgMusic" src="song101.mp3" loop></audio>
+<style>
+    /* ================= PASSWORD SCREEN ================= */
 
-<!-- FLOATING HEARTS -->
-<div id="heartsContainer"></div>
+    #passwordScreen {
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
 
-<!-- START SCREEN -->
-<section class="screen active" id="startScreen">
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
-    <div class="glass-card start-card">
+        background:
+            radial-gradient(circle at top,
+            #5c0a2b,
+            #17000d 55%,
+            #080006);
 
-        <div class="gift-icon">💌</div>
+        padding: 20px;
+    }
 
-        <h1>Open My Feelings 💞</h1>
+    .password-card {
+        width: 100%;
+        max-width: 380px;
 
-        <p>
-            உனக்காக நான் சொல்லாமல் வைத்திருந்த<br>
-            சில உணர்வுகள்...
-        </p>
+        padding: 35px 25px;
+        text-align: center;
 
-        <p class="small-note">
-            இதில் என் மனதில் இருக்கும் சில உணர்வுகள் 🥰
-        </p>
+        border-radius: 25px;
 
-        <button id="openBtn">
-            Open My Heart 🫀
-        </button>
+        background: rgba(255, 255, 255, 0.10);
+        backdrop-filter: blur(18px);
+
+        border: 1px solid rgba(255,255,255,0.18);
+
+        box-shadow:
+            0 20px 60px rgba(0,0,0,0.5);
+    }
+
+    .lock-icon {
+        font-size: 55px;
+        margin-bottom: 10px;
+    }
+
+    .password-card h1 {
+        color: white;
+        margin-bottom: 8px;
+    }
+
+    .password-card p {
+        color: #ffd9e8;
+        margin-bottom: 25px;
+    }
+
+    #passwordInput {
+        width: 100%;
+        box-sizing: border-box;
+
+        padding: 14px 16px;
+
+        border: none;
+        outline: none;
+
+        border-radius: 12px;
+
+        background: rgba(255,255,255,0.95);
+        color: #17000d;
+
+        font-size: 16px;
+
+        margin-bottom: 15px;
+    }
+
+    #unlockBtn {
+        width: 100%;
+
+        padding: 14px;
+
+        border: none;
+        border-radius: 12px;
+
+        background: #ff4f91;
+        color: white;
+
+        font-size: 17px;
+        font-weight: bold;
+
+        cursor: pointer;
+
+        box-shadow:
+            0 8px 25px rgba(255,79,145,0.35);
+    }
+
+    #unlockBtn:active {
+        transform: scale(0.97);
+    }
+
+    #passwordError {
+        display: none;
+
+        margin-top: 15px;
+
+        color: #ff9fbd;
+        font-size: 14px;
+    }
+
+    .shake {
+        animation: shake 0.35s;
+    }
+
+    @keyframes shake {
+        0%   { transform: translateX(0); }
+        25%  { transform: translateX(-8px); }
+        50%  { transform: translateX(8px); }
+        75%  { transform: translateX(-8px); }
+        100% { transform: translateX(0); }
+    }
+
+</style>
+
+</head><body><!-- ================= PASSWORD SCREEN ================= --><section id="passwordScreen"><div class="password-card" id="passwordCard">
+
+    <div class="lock-icon">
+        🔐
+    </div>
+
+    <h1>
+        Private ❤️
+    </h1>
+
+    <p>
+        இந்த website-ஐ open செய்ய<br>
+        secret password enter பண்ணு 🥰
+    </p>
+
+    <input
+        type="password"
+        id="passwordInput"
+        placeholder="Enter Password 🔑"
+        autocomplete="off"
+    >
+
+    <button id="unlockBtn">
+        Unlock My Heart ❤️
+    </button>
+
+    <p id="passwordError">
+        ❌ Password தவறாக உள்ளது!
+    </p>
+
+</div>
+
+</section><!-- ================= WEBSITE CONTENT ================= --><!-- MUSIC --><audio id="bgMusic"
+src="song101.mp3"
+loop>
+</audio>
+
+<!-- FLOATING HEARTS --><div id="heartsContainer"></div><!-- START SCREEN --><section class="screen active" id="startScreen"><div class="glass-card start-card">
+
+    <div class="gift-icon">
+        💌
+    </div>
+
+    <h1>
+        Open My Feelings 💞
+    </h1>
+
+    <p>
+        உனக்காக நான் சொல்லாமல் வைத்திருந்த<br>
+        சில உணர்வுகள்...
+    </p>
+
+    <p class="small-note">
+        இதில் என் மனதில் இருக்கும் சில உணர்வுகள் 🥰
+    </p>
+
+    <button id="openBtn">
+        Open My Heart 🫀
+    </button>
+
+</div>
+
+</section><!-- FEELINGS SCREEN --><section class="screen" id="memoryScreen"><div class="glass-card memory-card">
+
+    <div class="counter">
+
+        My Feeling
+
+        <span id="currentNumber">
+            1
+        </span>
+
+        of 6
 
     </div>
 
-</section>
+
+    <h2 id="memoryHeading">
+        My Feeling ❤️
+    </h2>
 
 
-<!-- FEELINGS SCREEN -->
-<section class="screen" id="memoryScreen">
+    <div class="photo-wrapper">
 
-    <div class="glass-card memory-card">
+        <img
+            id="memoryPhoto"
+            src="photo101.jpg"
+            alt="My Feeling"
+        >
 
-        <div class="counter">
-            My Feeling
-            <span id="currentNumber">1</span>
-            of 6
-        </div>
-
-        <h2 id="memoryHeading">
-            My Feeling ❤️
-        </h2>
-
-        <div class="photo-wrapper">
-
-            <img
-                id="memoryPhoto"
-                src="photo101.jpg"
-                alt="My Feeling"
-            >
-
-            <canvas id="scratchCanvas"></canvas>
-
-        </div>
-
-        <p class="scratch-hint">
-            👆 Scratch பண்ணி என் Feeling-ஐ பாரு ❤️
-        </p>
-
-        <div id="specialMessage" class="special-message">
-
-            <div class="message-icon">💖</div>
-
-            <h3 id="messageTitle">
-                My Feeling ❤️
-            </h3>
-
-            <p id="messageText"></p>
-
-        </div>
-
-        <button id="nextBtn" class="next-btn">
-            Next Feeling ❤️
-        </button>
+        <canvas id="scratchCanvas"></canvas>
 
     </div>
 
-</section>
+
+    <p class="scratch-hint">
+        👆 Scratch பண்ணி என் Feeling-ஐ பாரு ❤️
+    </p>
 
 
-<!-- FINAL PROPOSAL -->
-<section class="screen" id="finalScreen">
+    <div
+        id="specialMessage"
+        class="special-message"
+    >
 
-    <div class="glass-card final-card">
-
-        <div class="final-heart">💖</div>
-
-        <h1>
-            One Last Thing... ❤️
-        </h1>
-
-        <p class="final-description">
-            என் மனதில் இருக்கும் உணர்வுகள்<br>
-            இப்போ உனக்கு தெரிஞ்சிருக்கும்...
-
-            <br><br>
-
-            ஆனால் சொல்ல வேண்டிய ஒன்று<br>
-            இன்னும் இருக்கு...
-        </p>
-
-        <h2>
-            Will You Be Mine? 💍❤️
-        </h2>
-
-        <p class="choose-text">
-            என் வாழ்க்கையில் என்னுடன் இருப்பாயா? 🥹❤️
-        </p>
-
-        <div id="answerButtons" class="answer-buttons">
-
-            <button id="yesBtn" class="yes-btn">
-                YES 😍❤️
-            </button>
-
-            <button id="noBtn" class="no-btn">
-                NO 😭💔
-            </button>
-
-        </div>
-
-
-        <!-- FEEDBACK -->
-        <div id="feedbackBox" class="feedback-box">
-
-            <div id="feedbackEmoji">💌</div>
-
-            <h3 id="feedbackTitle">
-                My Heart Is Waiting 🫀
-            </h3>
-
-            <p id="feedbackDescription">
-                உன் உண்மையான பதிலை சொல்லு...
-            </p>
-
-            <textarea
-                id="feedback"
-                placeholder="உன் மனதில் என்ன இருக்கிறது? 🥹">
-            </textarea>
-
-            <button id="submitBtn" class="submit-btn">
-                Send My Answer 💌
-            </button>
-
-            <p id="submitStatus"></p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- THANK YOU -->
-<section class="screen" id="thankYouScreen">
-
-    <div class="glass-card thank-card">
-
-        <div class="thank-heart">
+        <div class="message-icon">
             💖
         </div>
 
-        <h1>
-            Thank You ❤️
-        </h1>
+        <h3 id="messageTitle">
+            My Feeling ❤️
+        </h3>
 
-        <p id="thankMessage">
-            என் உணர்வுகளை புரிந்து கொண்டு
-            <br>
-            உன் answer-ஐ சொல்லிருப்பாய் என்று நினைக்கிறேன். 🥹❤️
-        </p>
-
-        <div class="heart-row">
-            ❤️ 💕 💖 💗 💓
-        </div>
+        <p id="messageText"></p>
 
     </div>
 
-</section>
+
+    <button
+        id="nextBtn"
+        class="next-btn"
+    >
+        Next Feeling ❤️
+    </button>
+
+</div>
+
+</section><!-- FINAL PROPOSAL --><section class="screen" id="finalScreen"><div class="glass-card final-card">
+
+    <div class="final-heart">
+        💖
+    </div>
+
+    <h1>
+        One Last Thing... ❤️
+    </h1>
+
+    <p class="final-description">
+
+        என் மனதில் இருக்கும் உணர்வுகள்<br>
+        இப்போ உனக்கு தெரிஞ்சிருக்கும்...
+
+        <br><br>
+
+        ஆனால் சொல்ல வேண்டிய ஒன்று<br>
+        இன்னும் இருக்கு...
+
+    </p>
 
 
-<script src="script.js"></script>
+    <h2>
+        Will You Be Mine? 💍❤️
+    </h2>
 
-</body></html>
+
+    <p class="choose-text">
+        என் வாழ்க்கையில் என்னுடன் இருப்பாயா? 🥹❤️
+    </p>
+
+
+    <div
+        id="answerButtons"
+        class="answer-buttons"
+    >
+
+        <button
+            id="yesBtn"
+            class="yes-btn"
+        >
+            YES 😍❤️
+        </button>
+
+
+        <button
+            id="noBtn"
+            class="no-btn"
+        >
+            NO 😭💔
+        </button>
+
+    </div>
+
+
+    <!-- FEEDBACK -->
+
+    <div
+        id="feedbackBox"
+        class="feedback-box"
+    >
+
+        <div id="feedbackEmoji">
+            💌
+        </div>
+
+
+        <h3 id="feedbackTitle">
+            My Heart Is Waiting 🫀
+        </h3>
+
+
+        <p id="feedbackDescription">
+            உன் உண்மையான பதிலை சொல்லு...
+        </p>
+
+
+        <textarea
+            id="feedback"
+            placeholder="உன் மனதில் என்ன இருக்கிறது? 🥹">
+        </textarea>
+
+
+        <button
+            id="submitBtn"
+            class="submit-btn"
+        >
+            Send My Answer 💌
+        </button>
+
+
+        <p id="submitStatus"></p>
+
+    </div>
+
+</div>
+
+</section><!-- THANK YOU --><section
+    class="screen"
+    id="thankYouScreen"
+><div class="glass-card thank-card">
+
+    <div class="thank-heart">
+        💖
+    </div>
+
+
+    <h1>
+        Thank You ❤️
+    </h1>
+
+
+    <p id="thankMessage">
+
+        என் உணர்வுகளை புரிந்து கொண்டு
+        <br>
+        உன் answer-ஐ சொல்லிருப்பாய் என்று நினைக்கிறேன். 🥹❤️
+
+    </p>
+
+
+    <div class="heart-row">
+        ❤️ 💕 💖 💗 💓
+    </div>
+
+</div>
+
+</section><!-- ================= PASSWORD SCRIPT ================= --><script>
+
+    const correctPassword = "MADAM@123";
+
+    const passwordScreen =
+        document.getElementById("passwordScreen");
+
+    const passwordInput =
+        document.getElementById("passwordInput");
+
+    const unlockBtn =
+        document.getElementById("unlockBtn");
+
+    const passwordError =
+        document.getElementById("passwordError");
+
+    const passwordCard =
+        document.getElementById("passwordCard");
+
+
+    function unlockWebsite() {
+
+        const enteredPassword =
+            passwordInput.value;
+
+
+        if (enteredPassword === correctPassword) {
+
+            passwordError.style.display = "none";
+
+            passwordScreen.style.opacity = "0";
+
+            passwordScreen.style.transition =
+                "opacity 0.6s ease";
+
+
+            setTimeout(() => {
+
+                passwordScreen.style.display =
+                    "none";
+
+            }, 600);
+
+
+        } else {
+
+            passwordError.style.display =
+                "block";
+
+            passwordCard.classList.remove("shake");
+
+            void passwordCard.offsetWidth;
+
+            passwordCard.classList.add("shake");
+
+            passwordInput.value = "";
+
+            passwordInput.focus();
+
+        }
+
+    }
+
+
+    unlockBtn.addEventListener(
+        "click",
+        unlockWebsite
+    );
+
+
+    passwordInput.addEventListener(
+        "keydown",
+        function(event) {
+
+            if (event.key === "Enter") {
+
+                unlockWebsite();
+
+            }
+
+        }
+    );
+
+</script><!-- YOUR ORIGINAL JAVASCRIPT --><script src="script.js"></script></body></html>
